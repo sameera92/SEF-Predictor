@@ -1,0 +1,115 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+            <h2>Source Extraction Feasibility Predictor</h2>
+            <div class="login-wrapper">
+                <div class="box">
+                    <div class="box-col">
+
+
+                        <!-- <mat-form-field class="text-field-common" appearance="fill">
+                            <mat-label class="text-label">Email</mat-label>
+                            <div class="input-wrapper">
+                                <input class="subtitle1 input-wrapper--text-input" type="email" matInput
+                                    [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                                <span class="material-icons-round input-wrapper--input-icon">
+                                    visibility
+                                </span>
+                                <span class="material-icons-round input-wrapper--input-error-icon">
+                                    error
+                                </span>
+                                <span class="material-icons-round input-wrapper--input-success-icon">
+                                    check_circle
+                                </span>
+                            </div>
+                            <mat-hint class="text-hint caption-typo">Assistive text</mat-hint>
+                            <mat-error class="text-error caption-typo"
+                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error class="text-error caption-typo" *ngIf="emailFormControl.hasError('required')">
+                                Email is required
+                            </mat-error>
+                        </mat-form-field> -->
+
+
+
+
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>URL</mat-label>
+                            <input matInput placeholder="URL" formControlName="url" required>
+                            <!-- <div *ngIf="!formData.controls['url'].valid && formData.controls['url'].touched">
+                                <div *ngIf="formData.controls['url'].errors?.required" style="background-color: red">
+                                    URL is required
+                                </div>
+                                <div *ngIf="formData.controls['url'].errors?.pattern" style="background-color: red">
+                                    URL format is wrong
+                                </div>
+                            </div> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>country</mat-label>
+                            <input matInput placeholder="country" formControlName="country" required>
+                            <mat-error>
+                                Please provide a valid country
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>language</mat-label>
+                            <input matInput placeholder="language" formControlName="language" required>
+                            <mat-error>
+                                Please provide a valid language
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>sentiment</mat-label>
+                            <input matInput placeholder="sentiment" formControlName="sentiment" required>
+                            <mat-error>
+                                Please provide a valid sentiment
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>site</mat-label>
+                            <input matInput placeholder="site" formControlName="site" required>
+                            <mat-error>
+                                Please provide a valid site
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>payload</mat-label>
+                            <input matInput placeholder="payload" formControlName="payload" required>
+                            <mat-error>
+                                Please provide a valid payload
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box-col">
+                        <mat-form-field class="full-width-input" appearance="outline">
+                            <mat-label>governmentSource</mat-label>
+                            <input matInput placeholder="governmentSource" formControlName="governmentSource" required>
+                            <mat-error>
+                                Please provide a valid governmentSource
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <button mat-raised-button color="primary">Login</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
