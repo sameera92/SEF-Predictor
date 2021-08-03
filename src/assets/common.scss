@@ -1,0 +1,130 @@
+.toolbar.mat-form-field {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.toolbar {
+    top: 0px !important;
+    position: sticky !important;
+    z-index: 1000;
+}
+
+.result-list-wrapper .search-field-wrapper .mat-form-field-outline {
+    background: transparent !important;
+}
+
+.mat-card {
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 30%);
+    padding: 30px !important;
+}
+
+.dashboard-wrapper {
+    margin-top: -80px;
+}
+
+.result-list-wrapper {
+    margin-top: -110px;
+}
+
+th.mat-header-cell {
+    font-size: 14px;
+}
+
+// Result-list--START
+.result-list-wrapper {
+    table {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        min-width: 500px;
+    }
+    th.mat-header-cell {
+        text-align: left;
+        max-width: 300px;
+    }
+
+    .result-list-wrapper {
+        padding: 20px;
+    }
+
+    .result-list-container {
+        padding: 20px;
+    }
+
+    .mat-icon-prefix {
+        font-size: 24px;
+        margin-right: 8px;
+    }
+
+    .search-field-wrapper {
+        width: 80%;
+        .mat-form-field-outline {
+            border-radius: 5px;
+        }
+        input.mat-input-element {
+            position: relative;
+            top: -5px;
+        }
+    }
+}
+
+// Result-list--END
+
+// Dashboard -- START
+.dashboard-wrapper {
+    mat-card {
+        text-align: center;
+        margin: 30px;
+    }
+
+    mat-form-field {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .login-wrapper {
+        margin: 30px;
+    }
+
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .box > * {
+        flex: 1 1 160px;
+    }
+
+    .box-col {
+        margin-right: 20px;
+    }
+}
+
+// Dashboard -- END
+
+// Login -- START
+.login-full-wrapper {
+    mat-card {
+        max-width: 400px;
+        margin: 2em auto;
+        text-align: center;
+    }
+
+    mat-form-field {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .login-wrapper {
+        margin-top: 30px;
+    }
+}
+// Login -- END
