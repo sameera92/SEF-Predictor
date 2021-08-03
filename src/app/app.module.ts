@@ -49,12 +49,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ResultListComponent } from './result-list/result-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ResultListComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +102,8 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    FlexLayoutModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]
