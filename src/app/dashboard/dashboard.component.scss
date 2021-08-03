@@ -23,3 +23,17 @@ mat-form-field {
 .box-col {
     margin-right: 20px;
 }
+.plus-minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    background-color: #fd903f;
+    min-width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color: #fff;
+    user-select: none;
+    border: none;
+}

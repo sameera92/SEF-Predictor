@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { WebService } from '../services/web.service';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
-export class BSTErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 
 @Component({
@@ -20,38 +16,45 @@ export class BSTErrorStateMatcher implements ErrorStateMatcher {
 })
 export class DashboardComponent implements OnInit {
 
-  public loginInvalid = false;
-  public formData: FormGroup;
-  urlRegEx = '[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?';
+  loginInvalid = false;
+
+  filteredNationalityList: Observable<any[]>;
+  filteredLangList: Observable<any[]>;
+  countryList: any[]=[];
+  languageList: any[]=[];
+  formData: FormGroup;
+
+
 
   constructor(
     private fb: FormBuilder,
-    private _router: Router
+    private webService: WebService
   ) {
-
-
-  }
-  ngOnInit() {
-    this.formInitialize();
-  }
-
-  formInitialize(): void {
+    
+    const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
     this.formData = this.fb.group({
-      url: ['', {
-        validators: [Validators.required, Validators.pattern(this.urlRegEx)],
-        updateOn: 'blur',
-      }],
-      // url = new FormControl('', [
-      //   Validators.required,
-      //   Validators.pattern(this.urlRegEx),
-      // ]);
+      url: ['', [Validators.required, Validators.pattern(reg)]],
       country: ['', Validators.required],
+      name: ['', Validators.required],
+      hunch: [''],
+      quality:[''],
+      sourceType: ['', Validators.required],
       language: ['', Validators.required],
-      sentiment: ['', Validators.required],
+      authority: ['', Validators.required],
       site: ['', Validators.required],
       payload: ['', Validators.required],
       governmentSource: ['', Validators.required]
     });
+  }
+  ngOnInit() {
+    this.formInitialize();
+    this.getNationalityList();
+    this.getLanguageList();
+    this.filterNationalityInitialize();
+  }
+
+  formInitialize() {
+  
   }
 
   emailFormControl = new FormControl('', [
@@ -62,9 +65,60 @@ export class DashboardComponent implements OnInit {
   onSubmit() {
 
   }
+
+
+  filterNationalityInitialize() {
+      this.filteredNationalityList = this.formData.controls['country'].valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this.filterCountry(value))
+      );
+
+      this.filteredLangList = this.formData.controls['language'].valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this.filterLanguage(value))
+      );
+      
+  }
+
+  private filterCountry(value: string) {
+    if (!value) { return this.countryList; }
+    return this.countryList.filter(option => option.name.toLowerCase().includes(value));
+  }
+
+  getNationalityList() {
+    this.webService.getCountries().subscribe(
+          (data: any) => {
+            if (data) {
+              this.countryList = data;
+            }
+          },);
+  }
+
+private filterLanguage(value: string) {
+  if (!value) { return this.languageList; }
+  return this.languageList.filter(option => option.name.toLowerCase().includes(value));
+}
+
+getLanguageList() {
+  this.webService.getLang().subscribe(
+        (data: any) => {
+          if (data) {
+            this.languageList = data;
+          }
+        },);
+}
+
+displayLanguage(langObj:any){
+  return langObj ? langObj.name : undefined;
+}
+
+displayNationality(countryObj:any){
+  return countryObj ? countryObj.name : undefined;
 }
 
 
-
+}
 
 
