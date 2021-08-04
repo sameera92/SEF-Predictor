@@ -4,6 +4,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { DataService } from './services/dataService';
+import { LoaderService } from './services/loaderService';
 
 interface Color {
   value: string;
@@ -34,9 +35,11 @@ export class AppComponent {
     private _router: Router,
     private _snackBar: MatSnackBar,
     private datService:DataService,
+    private loader:LoaderService,
   ) { }
 
   ngOnInit() {
+    this.loader.hideLoader();
     this.datService.currentLogedIn.subscribe(data =>{ 
       if(data){
         this.loggedIn =  true;

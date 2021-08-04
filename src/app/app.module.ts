@@ -57,6 +57,8 @@ import { RegisterComponent } from './register/register.component';
 import { StepperInputComponent } from './stepper-input/stepper-input.component';
 import { InfoModalComponent } from './info-modal/info-modal.component';
 import { DataService } from './services/dataService';
+import { LoaderService } from './services/loaderService';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import { DataService } from './services/dataService';
     ResultListComponent,
     RegisterComponent,
     StepperInputComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +119,7 @@ import { DataService } from './services/dataService';
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService,WebService,DataService],
+  providers: [AuthenticationService,WebService,DataService,LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

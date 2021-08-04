@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { WebService } from '../services/web.service';
 import { DataService } from '../services/dataService';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { LoaderService } from '../services/loaderService';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,7 +42,8 @@ export class DashboardComponent implements OnInit {
     private webService: WebService,
     private _router: Router,
     private dataService: DataService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private loader: LoaderService
   ) {
 
     const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loader.showLoader();
     this.dataService.changeLogedInStatus(true);
     this.firstName = localStorage.getItem('name');
     this.formInitialize();
@@ -98,6 +101,7 @@ export class DashboardComponent implements OnInit {
   ]);
 
   onSubmit() {
+    this.loader.showLoader();
     if(this.formData.valid){
     let model = this.formData;
     let request = {   
@@ -130,6 +134,7 @@ export class DashboardComponent implements OnInit {
               panelClass: "success-dialog"
             });
             }
+            this.loader.hideLoader();
           }
       ),
       error => {
@@ -139,6 +144,7 @@ export class DashboardComponent implements OnInit {
           duration: this.durationInSeconds * 2000,
           panelClass: "error-dialog"
         });
+        this.loader.hideLoader();
       }
       )
     }else if(this.formData.invalid){
@@ -148,6 +154,7 @@ export class DashboardComponent implements OnInit {
         duration: this.durationInSeconds * 2000,
         panelClass: "error-dialog"
       });
+      this.loader.hideLoader();
     }
   }
 
@@ -172,11 +179,14 @@ export class DashboardComponent implements OnInit {
     return this.countryList.filter(option => option.name.toLowerCase().includes(value));
   }
 
-  getNationalityList() {
+  async getNationalityList() {
+    await new Promise(resolve => setTimeout(resolve, 3000))
     this.webService.getCountries().subscribe(
       (data: any) => {
         if (data) {
+
           this.countryList = data;
+          this.loader.hideLoader();
         }
       });
   }
