@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   formData: FormGroup;
 
   title = "Stepper input";
-  initialValue: any;
+  initialValue = 1;
   step: number = 0;
   min: number = 0;
   max: number = 0;
@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   ariaLabelMore: string;
   renderedValue: string;
   value: number = 0;
+  firstName: any;
 
   constructor(
     private fb: FormBuilder,

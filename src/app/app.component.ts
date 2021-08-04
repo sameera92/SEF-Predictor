@@ -14,6 +14,7 @@ export class AppComponent {
   selectedValue: string;
   bodyContent: any;
   sourceBody: any;
+  firstName: any;
 
   constructor(
     private authenticationService: AuthenticationService
