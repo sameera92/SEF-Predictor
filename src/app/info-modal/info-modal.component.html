@@ -1,11 +1,27 @@
-<h1 mat-dialog-title>Favorite Animal</h1>
-<div mat-dialog-content>
-    My favorite animal is:
+<h2 mat-dialog-title>How is the Score Calculated?</h2>
+<mat-divider class="mt-0"></mat-divider>
+<div mat-dialog-content class="mt-20">
+    The Machine Learning model implemented will return a prediction of:
     <ul>
-        <li>sss</li>
-        <li>abv</li>
+        <li>1: The model predicts that data can be collected from the source.</li>
+        <li>0: The model predicts that data cannot be collected from the source.</li>
     </ul>
+
+    <div>
+        The model also provides a probability for each of the predictions above.
+    </div>
+    <div class="mt-10">
+        If the prediction is 1(data can be collected from the source), the score will be the value of the prediction
+        probability.
+    </div>
+    <div>
+        If the prediction is 0( data cannot be collected from the source), the score will be the negative value of the
+        prediction probability. 
+    </div>
+    <div>
+        This allows us to sort the score in a meaningful manner.
+    </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="float-right">
     <button mat-button mat-dialog-close>Close</button>
 </div>
