@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="display-grid">
   <mat-card-content>
     <form [formGroup]="formData" (ngSubmit)="onSubmit()">
       <h2>Source Extraction Feasibility Predictor </h2>
@@ -46,7 +46,8 @@
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>Language</mat-label>
-              <input type="text" aria-label="language" formControlName="language" matInput [matAutocomplete]="auto2">
+              <input type="text" aria-label="language" formControlName="language" matInput [matAutocomplete]="auto2"
+                required>
               <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayLanguage">
                 <mat-option *ngFor="let option of filteredLangList | async" [value]="option">
                   {{ option.name }}
@@ -54,7 +55,7 @@
               </mat-autocomplete>
               <i class="fa fa-search search_ico"></i>
               <mat-error>
-                Please provide a valid language
+                Language is required
               </mat-error>
             </mat-form-field>
           </div>
@@ -86,21 +87,22 @@
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>Source Type</mat-label>
-              <mat-select formControlName="sourceType">
-                <mat-option>None</mat-option>
+              <mat-select formControlName="sourceType" required>
+                <mat-option value="Company Registry">Company Registry</mat-option>
+                <mat-option value="Charity">Charity</mat-option>
+                <mat-option value="Stock Exchange">Stock Exchange</mat-option>
                 <mat-option value="Regulator">Regulator</mat-option>
-                <mat-option value="qq">ff</mat-option>
-                <mat-option value="q">ff</mat-option>
+                <mat-option value="Person">Person</mat-option>
               </mat-select>
               <mat-error>
-                Please provide a valid source Type
+                Source Type is required
               </mat-error>
             </mat-form-field>
           </div>
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>Approved Authority</mat-label>
-              <input matInput formControlName="authority" required>
+              <input matInput formControlName="authority">
               <mat-error>
                 Please provide a valid Authority
               </mat-error>
@@ -112,21 +114,22 @@
             <mat-slide-toggle formControlName="isHttps">Https</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle formControlName="isGovernmentSource" >Government Source </mat-slide-toggle>
+            <mat-slide-toggle formControlName="isGovernmentSource">Government Source </mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle formControlName="isLoginRequire" >Login Required</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isLoginRequire">Login Required</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle formControlName="isreCaptcha" >reCAPTCHA</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isreCaptcha">reCAPTCHA</mat-slide-toggle>
           </div>
           <div class="box-col">
             <mat-slide-toggle formControlName="isCaptcha">CAPTCHA</mat-slide-toggle>
           </div>
         </div>
-
-        <button mat-raised-button color="primary" class="run-model-btn mr-10">View Previous Results</button>
-        <button mat-raised-button color="primary" class="run-model-btn">Run Model</button>
+        <div class="float-right">
+          <button mat-raised-button color="primary" class="run-model-btn mr-10">Run Model</button>
+          <button mat-raised-button color="primary" class="run-model-btn">View Previous Results</button>
+        </div>
       </div>
     </form>
   </mat-card-content>
