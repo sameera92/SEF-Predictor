@@ -55,17 +55,17 @@ export class AppComponent {
       case 'BLACK':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Black');
-        this.sourceBody[0].style.backgroundColor = 'rgb(72 72 72)';
+        // this.sourceBody[0].style.backgroundColor = 'rgb(72 72 72)';
         break;
       case 'BLUE':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Blue');
-        this.sourceBody[0].style.backgroundColor = '#969be0';
+        // this.sourceBody[0].style.backgroundColor = '#969be0';
         break;
       case 'YELLOW':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Yellow');
-        this.sourceBody[0].style.backgroundColor = '#ffffaa';
+        // this.sourceBody[0].style.backgroundColor = '#ffffaa';
         break;
       default:
         this.bodyContent.className = "";

@@ -28,7 +28,8 @@ body {
 }
 
 .dashboard-wrapper,
-.login-full-wrapper {
+.login-full-wrapper,
+.dashboard-wrapper {
     margin-top: -80px;
 }
 
@@ -48,6 +49,13 @@ th.mat-header-cell {
 
 mat-divider {
     margin-top: 25px !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .sign-up-text {

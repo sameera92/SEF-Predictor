@@ -1,7 +1,7 @@
 $color-black: #313030 !important;
 $color-black-light: #2a2a2a !important;
 $color-black-light-01: #4f4f4f !important;
-$color-font: #bfbfbf;
+$color-font: #d4d4d4;
 $color-bg: #363636;
 $color-btn-bg: #3c3c3c !important;
 $color-toggle-on: rgb(121 121 121) !important;
@@ -54,6 +54,15 @@ td,
 [dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow,
 th.mat-header-cell {
     color: $color-font;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px $color-black-light inset; 
+    -webkit-text-fill-color: $color-font;
+}
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px $color-black-light inset;
+    -webkit-text-fill-color: $color-font;
 }
 
 .mat-slide-toggle-thumb,
