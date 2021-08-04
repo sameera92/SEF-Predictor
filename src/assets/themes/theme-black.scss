@@ -5,6 +5,8 @@ $color-font: #d4d4d4;
 $color-bg: #363636;
 $color-btn-bg: #3c3c3c !important;
 $color-toggle-on: rgb(121 121 121) !important;
+$color-invalid-score-row: #4e3b3b;
+$color-latest-row: #403b4e;
 
 tbody,
 .mat-paginator {
@@ -15,6 +17,22 @@ thead,
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary {
     background-color: $color-black-light-01;
+}
+
+tr.mat-row.invalidScore {
+    background-color: $color-invalid-score-row;
+}
+
+tr.mat-row.latestRow {
+    background-color: $color-latest-row;
+}
+
+mat-row, mat-header-row, 
+mat-footer-row, 
+th.mat-header-cell, 
+td.mat-cell, 
+td.mat-footer-cell {
+    border-bottom-color: $color-black-light-01;
 }
 
 .mat-flat-button.mat-primary,
@@ -60,9 +78,8 @@ th.mat-header-cell {
     background-color: $color-black-light !important;
 }
 
-
 input:-webkit-autofill {
-    -webkit-box-shadow:0 0 0 50px $color-black-light inset; 
+    -webkit-box-shadow: 0 0 0 50px $color-black-light inset;
     -webkit-text-fill-color: $color-font;
 }
 input:-webkit-autofill:focus {

@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InfoModalComponent } from '../info-modal/info-modal.component';
 
 @Component({
@@ -19,7 +19,7 @@ export class ResultListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _router: Router, public dialog: MatDialog) {}
+  constructor(private _router: Router, public dialog: MatDialog) { }
 
   openDialog() {
     this.dialog.open(InfoModalComponent, {});
@@ -43,293 +43,41 @@ export class ResultListComponent implements AfterViewInit {
 }
 
 export interface PeriodicElement {
-  url: string;
-  name: string;
-  country: string;
-  language: string;
-  originalHunch: number;
-  qualityOfSite: number;
-  isHTTPS: boolean;
-  isGovSource: boolean;
-  sourceType: string;
-  approvedAuthority: string;
-  isLoginRequired: boolean;
-  isreCAPTCHA: boolean;
-  isCAPTCHA: boolean;
-  numberOfScriptTags: number;
-  calculatedScore: number;
-  executedDate: string;
+  URL: string;
+  Name: string;
+  Country: string;
+  IsLatest: boolean;
+  IsLessThanZero: boolean;
+  Score: number;
+  Date: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: any[] = [
   {
-    "url": "https://www.fsc.gov.tw/ch/index.jsp#",
-    "name": "Financial Supervisory Commission R.O.C",
-    "country": "Taiwan",
-    "language": "Cantoneese",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Taiwan",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 20,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
+    "Country": "Sri-Lanka",
+    "Date": "03-08-2021",
+    "IsLatest": false,
+    "IsLessThanZero": true,
+    "Name": "sdsd",
+    "Score": -21,
+    "URL": "dad"
   },
   {
-    "url": "https://www.bts.com",
-    "name": "BTS",
-    "country": "Israel",
-    "language": "English",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Israel",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 15,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
+    "Country": "Sri-Lanka",
+    "Date": "04-08-21",
+    "IsLatest": false,
+    "IsLessThanZero": false,
+    "Name": "dasdadsa",
+    "Score": 89,
+    "URL": "fsafsaf"
   },
   {
-    "url": "https://www.abc.com",
-    "name": "ABC",
-    "country": "Sri Lanka",
-    "language": "Sinhala",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of SL",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.def.com",
-    "name": "DEF",
-    "country": "India",
-    "language": "Hindi",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of India",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.fsc.gov.tw/ch/index.jsp#",
-    "name": "Financial Supervisory Commission R.O.C",
-    "country": "Taiwan",
-    "language": "Cantoneese",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Taiwan",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 20,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.bts.com",
-    "name": "BTS",
-    "country": "Israel",
-    "language": "English",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Israel",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 15,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.abc.com",
-    "name": "ABC",
-    "country": "Sri Lanka",
-    "language": "Sinhala",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of SL",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.def.com",
-    "name": "DEF",
-    "country": "India",
-    "language": "Hindi",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of India",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.bts.com",
-    "name": "BTS",
-    "country": "Israel",
-    "language": "English",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Israel",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 15,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.abc.com",
-    "name": "ABC",
-    "country": "Sri Lanka",
-    "language": "Sinhala",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of SL",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.def.com",
-    "name": "DEF",
-    "country": "India",
-    "language": "Hindi",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of India",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.fsc.gov.tw/ch/index.jsp#",
-    "name": "Financial Supervisory Commission R.O.C",
-    "country": "Taiwan",
-    "language": "Cantoneese",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Taiwan",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 20,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.bts.com",
-    "name": "BTS",
-    "country": "Israel",
-    "language": "English",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of Israel",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 15,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.abc.com",
-    "name": "ABC",
-    "country": "Sri Lanka",
-    "language": "Sinhala",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of SL",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
-  },
-  {
-    "url": "https://www.def.com",
-    "name": "DEF",
-    "country": "India",
-    "language": "Hindi",
-    "originalHunch": 2,
-    "qualityOfSite": 2,
-    "isHTTPS": true,
-    "isGovSource": true,
-    "sourceType": "Regulator",
-    "approvedAuthority": "Gov of India",
-    "isLoginRequired": false,
-    "isreCAPTCHA": false,
-    "isCAPTCHA": false,
-    "numberOfScriptTags": 10,
-    "calculatedScore": 20,
-    "executedDate": "05-08-2021",
+    "Country": "Sri-Lanka",
+    "Date": "04-08-21",
+    "IsLatest": true,
+    "IsLessThanZero": false,
+    "Name": "dasdadsa",
+    "Score": 89,
+    "URL": "fsafsaf"
   }
 ]
