@@ -65,4 +65,8 @@ export class LoginComponent implements OnInit {
   signOut() {
     this.authenticationService.SignOut();
   }
+
+  goToRegisterPage() {
+    this._router.navigate(['/register']);
+  }
 }

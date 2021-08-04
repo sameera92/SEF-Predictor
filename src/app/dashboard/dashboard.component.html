@@ -7,7 +7,7 @@
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>URL</mat-label>
-              <input matInput placeholder="URL" formControlName="url" required>
+              <input matInput formControlName="url" required>
 
               <mat-error class="text-error caption-typo"
                 *ngIf="formData.controls['url'].errors && formData.controls['url'].errors.pattern">
@@ -22,7 +22,7 @@
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>Name</mat-label>
-              <input matInput placeholder="name" formControlName="name" required>
+              <input matInput formControlName="name" required>
               <mat-error>
                 Please provide a valid country
               </mat-error>
@@ -31,7 +31,7 @@
           <div class="box-col">
             <mat-form-field class="full-width-input"  appearance="outline">
                 <mat-label>Country</mat-label>
-                <input type="text" placeholder="Country" aria-label="Country"
+                <input type="text" aria-label="Country"
                   formControlName="country" matInput [matAutocomplete]="auto1">
                 <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayNationality">
                   <mat-option *ngFor="let option of filteredNationalityList | async" [value]="option">
@@ -47,7 +47,7 @@
           <div class="box-col">
             <mat-form-field class="full-width-input"  appearance="outline">
                 <mat-label>Language</mat-label>
-                <input type="text" placeholder="Language" aria-label="language"
+                <input type="text" aria-label="language"
                   formControlName="language" matInput [matAutocomplete]="auto2">
                 <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayLanguage">
                   <mat-option *ngFor="let option of filteredLangList | async" [value]="option">
@@ -102,7 +102,7 @@
           <div class="box-col">
             <mat-form-field class="full-width-input" appearance="outline">
               <mat-label>Approved Authority</mat-label>
-              <input matInput placeholder="governmentSource" formControlName="authority" required>
+              <input matInput formControlName="authority" required>
               <mat-error>
                 Please provide a valid Authority
               </mat-error>
