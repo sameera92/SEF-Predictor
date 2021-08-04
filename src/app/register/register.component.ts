@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.datService.changeLogedInStatus(false);
   }
 
   onSubmitRegister() {
@@ -60,6 +61,7 @@ export class RegisterComponent implements OnInit {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
+          panelClass: "success-dialog"
         });
       this._router.navigate(['/login']);
       this.datService.firstName = this.firstname;
@@ -70,6 +72,7 @@ export class RegisterComponent implements OnInit {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
+          panelClass: "error-dialog"
         });
   });;
   }

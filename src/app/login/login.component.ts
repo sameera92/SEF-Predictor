@@ -11,6 +11,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/AuthenticationService';
+import { DataService } from '../services/dataService';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds:number = 2;
-  constructor(private fb: FormBuilder, private _router: Router,
+  constructor(private fb: FormBuilder, private _router: Router,private datService :DataService,
     private authenticationService:AuthenticationService,
     private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.datService.changeLogedInStatus(false);
    }
 
   async onSubmit(): Promise<void> {
@@ -60,16 +62,19 @@ export class LoginComponent implements OnInit {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
+          panelClass: "success-dialog"
         });
       this._router.navigate(['/dashboard']);
 })
   .catch((err: { message: any; }) => {
+    this.datService.changeLogedInStatus(false);
       this._snackBar.open(err.message, '', {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
+          panelClass: "error-dialog"
         });
-      console.log("Something went wrong:", err.message);
+      
   });;
   }
 

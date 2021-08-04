@@ -17,15 +17,15 @@ export class AuthenticationService {
     }
 
     /* Sign up */
-   async SignUp(email: string, password: string,name=''):Promise<any>{
-        this.angularFireAuth
+   async SignUp(email: string, password: string,name=''){
+        return this.angularFireAuth
             .createUserWithEmailAndPassword(email, password)
            
     }
 
     /* Sign in */
-    async SignIn(email: string, password: string):Promise<any>{
-        this.angularFireAuth
+    async SignIn(email: string, password: string){
+        return this.angularFireAuth
             .signInWithEmailAndPassword(email, password)
            
     }

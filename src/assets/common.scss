@@ -272,5 +272,13 @@ input:-webkit-autofill:active {
     min-width: calc(100% - 25px - 14px);
 }
 
+.error-dialog{
+    background-color: rgb(179, 17, 17) !important;
+    color:white
+}
+.success-dialog{
+    background-color: rgb(18, 134, 70) !important;
+    color:rgb(248, 248, 248)
+}
 
 //Stepper - Input -- END

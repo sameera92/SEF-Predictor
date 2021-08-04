@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { AuthenticationService } from './services/AuthenticationService'; import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { DataService } from './services/dataService';
 
 interface Color {
   value: string;
@@ -21,13 +24,26 @@ export class AppComponent {
   sourceBody: any;
   themeColor: string;
   firstName: any;
-
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  durationInSeconds:number = 2;
+  loggedIn:boolean;
   constructor(
     private authenticationService: AuthenticationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _router: Router,
+    private _snackBar: MatSnackBar,
+    private datService:DataService,
   ) { }
 
   ngOnInit() {
+    this.datService.currentLogedIn.subscribe(data =>{ 
+      if(data){
+        this.loggedIn =  true;
+      }else{
+        this.loggedIn =  false;
+      }
+    })
     this.bodyContent = document.getElementById('body-wrapper');
     this.bodyContent.className = "";
     this.bodyContent.classList.add('Theme-Black');
@@ -76,5 +92,13 @@ export class AppComponent {
 
   logout(){
     this.authenticationService.SignOut();
+    this._router.navigate(['/login']);
+    this.datService.changeLogedInStatus(false);
+    this._snackBar.open('Successfully Logged out', '', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.durationInSeconds * 2000,
+      panelClass: "success-dialog"
+    });
   }
 }

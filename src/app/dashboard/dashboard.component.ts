@@ -4,6 +4,8 @@ import { map, startWith } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WebService } from '../services/web.service';
+import { DataService } from '../services/dataService';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,11 +33,15 @@ export class DashboardComponent implements OnInit {
   renderedValue: string;
   value: number = 0;
   firstName: string | null;
-
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  durationInSeconds:number = 2;
   constructor(
     private fb: FormBuilder,
     private webService: WebService,
-    private _router: Router
+    private _router: Router,
+    private dataService: DataService,
+    private _snackBar: MatSnackBar
   ) {
 
     const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
@@ -48,7 +54,6 @@ export class DashboardComponent implements OnInit {
       sourceType: ['', Validators.required],
       language: ['', Validators.required],
       authority: ['', Validators.required],
-      site: ['', Validators.required],
       isHttps: [false],
       isGovernmentSource: [false],
       isLoginRequire:[false],
@@ -58,6 +63,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.changeLogedInStatus(true);
     this.firstName = localStorage.getItem('name');
     this.formInitialize();
     this.getNationalityList();
@@ -92,8 +98,7 @@ export class DashboardComponent implements OnInit {
   ]);
 
   onSubmit() {
-    this._router.navigate(['/results']);
-    
+    if(this.formData.valid){
     let model = this.formData;
     let request = {   
      url:model.get('url')?.value,
@@ -112,10 +117,38 @@ export class DashboardComponent implements OnInit {
     }
     console.log(request)
       this.webService.postMLModel(request).subscribe(
-          response=>{
-            console.log(response)
+          (response=>{
+            if(response){
+            this.dataService.changeData(response);
+            this._router.navigate(['/results']);
+            }else{
+            this.dataService.changeData([]);
+            this._snackBar.open('No Fetch Data.Please Try Again', '', {
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+              duration: this.durationInSeconds * 2000,
+              panelClass: "success-dialog"
+            });
+            }
           }
+      ),
+      error => {
+        this._snackBar.open('Something went wrong...', '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 2000,
+          panelClass: "error-dialog"
+        });
+      }
       )
+    }else if(this.formData.invalid){
+      this._snackBar.open('Please Fill mandatory fields...', '', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        duration: this.durationInSeconds * 2000,
+        panelClass: "error-dialog"
+      });
+    }
   }
 
 
@@ -174,11 +207,26 @@ export class DashboardComponent implements OnInit {
     this.webService.getPreviousResults().subscribe(
       (response=>{
         if(response){
-        console.log(response)
+          this.dataService.changeData(response);
+          this._router.navigate(['/results']);
         }else{
-          
+          this.dataService.changeData([]);
+          this._snackBar.open('No Fetch Data.Please Try Again', '', {
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            duration: this.durationInSeconds * 2000,
+            panelClass: "success-dialog"
+          });
         }
-      })
+      }),
+      error => {
+        this._snackBar.open('Something went wrong...', '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 2000,
+          panelClass: "error-dialog"
+        });
+      }
     )
   }
 

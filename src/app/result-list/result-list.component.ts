@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InfoModalComponent } from '../info-modal/info-modal.component';
 import { WebService } from '../services/web.service';
+import { DataService } from '../services/dataService';
 
 @Component({
   selector: 'app-result-list',
@@ -19,18 +20,17 @@ export class ResultListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _router: Router, public dialog: MatDialog  , private webService: WebService,) { }
+  constructor(private _router: Router, public dialog: MatDialog  , private webService: WebService,private data: DataService) { }
 
   ngOnInit(): void {
-    this.webService.getPreviousResults().subscribe(
-      (response=>{
-        if(response){
-         this.dataSource =  new MatTableDataSource(response);
-        }else{
-          
-        }
-      })
-    )
+    this.data.changeLogedInStatus(true);
+    this.data.currentData.subscribe(data =>{ 
+      if(data && data.length){
+        this.dataSource =  new MatTableDataSource(data);
+      }else{
+        this.dataSource = new MatTableDataSource();
+      }
+    })
   }
 
   openDialog() {
@@ -63,33 +63,3 @@ export interface PeriodicElement {
   Score: number;
   Date: string;
 }
-
-const ELEMENT_DATA: any[] = [
-  {
-    "Country": "Sri-Lanka",
-    "Date": "03-08-2021",
-    "IsLatest": false,
-    "IsLessThanZero": true,
-    "Name": "sdsd",
-    "Score": -21,
-    "URL": "dad"
-  },
-  {
-    "Country": "Sri-Lanka",
-    "Date": "04-08-21",
-    "IsLatest": false,
-    "IsLessThanZero": false,
-    "Name": "dasdadsa",
-    "Score": 89,
-    "URL": "fsafsaf"
-  },
-  {
-    "Country": "Sri-Lanka",
-    "Date": "04-08-21",
-    "IsLatest": true,
-    "IsLessThanZero": false,
-    "Name": "dasdadsa",
-    "Score": 89,
-    "URL": "fsafsaf"
-  }
-]
