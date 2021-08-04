@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
       quality: [''],
       sourceType: ['', Validators.required],
       language: ['', Validators.required],
-      authority: ['', Validators.required],
+      authority: [''],
       isHttps: [false],
       isGovernmentSource: [false],
       isLoginRequire:[false],
