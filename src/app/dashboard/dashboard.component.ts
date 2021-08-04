@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WebService } from '../services/web.service';
-
-
-/** Error when invalid control is dirty, touched, or submitted. */
-
 
 @Component({
   selector: 'app-dashboard',
@@ -20,24 +16,33 @@ export class DashboardComponent implements OnInit {
 
   filteredNationalityList: Observable<any[]>;
   filteredLangList: Observable<any[]>;
-  countryList: any[]=[];
-  languageList: any[]=[];
+  countryList: any[] = [];
+  languageList: any[] = [];
   formData: FormGroup;
 
-
+  title = "Stepper input";
+  initialValue: any;
+  step: number = 0;
+  min: number = 0;
+  max: number = 0;
+  symbol: string;
+  ariaLabelLess: string;
+  ariaLabelMore: string;
+  renderedValue: string;
+  value: number = 0;
 
   constructor(
     private fb: FormBuilder,
     private webService: WebService
   ) {
-    
+
     const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
     this.formData = this.fb.group({
       url: ['', [Validators.required, Validators.pattern(reg)]],
       country: ['', Validators.required],
       name: ['', Validators.required],
       hunch: [''],
-      quality:[''],
+      quality: [''],
       sourceType: ['', Validators.required],
       language: ['', Validators.required],
       authority: ['', Validators.required],
@@ -46,15 +51,33 @@ export class DashboardComponent implements OnInit {
       governmentSource: ['', Validators.required]
     });
   }
+
   ngOnInit() {
     this.formInitialize();
     this.getNationalityList();
     this.getLanguageList();
     this.filterNationalityInitialize();
+
+    this.value = this.initialValue
+    this.renderedValue = this.value.toString() + this.symbol;
   }
 
+  toggleMore = () => {
+    if (this.step + this.value <= this.max) {
+      this.value = this.value + this.step;
+      this.renderedValue = this.value.toString() + this.symbol;
+    }
+  };
+
+  toggleLess = () => {
+    if (this.value - this.step >= this.min) {
+      this.value = this.value - this.step;
+      this.renderedValue = this.value.toString() + this.symbol;
+    }
+  };
+
   formInitialize() {
-  
+
   }
 
   emailFormControl = new FormControl('', [
@@ -68,18 +91,18 @@ export class DashboardComponent implements OnInit {
 
 
   filterNationalityInitialize() {
-      this.filteredNationalityList = this.formData.controls['country'].valueChanges
+    this.filteredNationalityList = this.formData.controls['country'].valueChanges
       .pipe(
         startWith(''),
         map(value => this.filterCountry(value))
       );
 
-      this.filteredLangList = this.formData.controls['language'].valueChanges
+    this.filteredLangList = this.formData.controls['language'].valueChanges
       .pipe(
         startWith(''),
         map(value => this.filterLanguage(value))
       );
-      
+
   }
 
   private filterCountry(value: string) {
@@ -89,34 +112,34 @@ export class DashboardComponent implements OnInit {
 
   getNationalityList() {
     this.webService.getCountries().subscribe(
-          (data: any) => {
-            if (data) {
-              this.countryList = data;
-            }
-          },);
+      (data: any) => {
+        if (data) {
+          this.countryList = data;
+        }
+      });
   }
 
-private filterLanguage(value: string) {
-  if (!value) { return this.languageList; }
-  return this.languageList.filter(option => option.name.toLowerCase().includes(value));
-}
+  private filterLanguage(value: string) {
+    if (!value) { return this.languageList; }
+    return this.languageList.filter(option => option.name.toLowerCase().includes(value));
+  }
 
-getLanguageList() {
-  this.webService.getLang().subscribe(
-        (data: any) => {
-          if (data) {
-            this.languageList = data;
-          }
-        },);
-}
+  getLanguageList() {
+    this.webService.getLang().subscribe(
+      (data: any) => {
+        if (data) {
+          this.languageList = data;
+        }
+      });
+  }
 
-displayLanguage(langObj:any){
-  return langObj ? langObj.name : undefined;
-}
+  displayLanguage(langObj: any) {
+    return langObj ? langObj.name : undefined;
+  }
 
-displayNationality(countryObj:any){
-  return countryObj ? countryObj.name : undefined;
-}
+  displayNationality(countryObj: any) {
+    return countryObj ? countryObj.name : undefined;
+  }
 
 
 }

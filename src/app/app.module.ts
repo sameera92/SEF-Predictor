@@ -54,6 +54,7 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { WebService } from './services/web.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { RegisterComponent } from './register/register.component';
+import { StepperInputComponent } from './stepper-input/stepper-input.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { RegisterComponent } from './register/register.component';
     DashboardComponent,
     LoginComponent,
     ResultListComponent,
-    RegisterComponent
+    RegisterComponent,
+    StepperInputComponent
   ],
   imports: [
     BrowserModule,

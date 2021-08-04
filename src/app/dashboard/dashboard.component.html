@@ -29,36 +29,34 @@
             </mat-form-field>
           </div>
           <div class="box-col">
-            <mat-form-field class="full-width-input"  appearance="outline">
-                <mat-label>Country</mat-label>
-                <input type="text" aria-label="Country"
-                  formControlName="country" matInput [matAutocomplete]="auto1">
-                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayNationality">
-                  <mat-option *ngFor="let option of filteredNationalityList | async" [value]="option">
-                    {{ option.name }}
-                  </mat-option>
-                </mat-autocomplete>
-                <i class="fa fa-search search_ico"></i>
-                <mat-error>
-                  Please provide a valid country
-                </mat-error>
-              </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline">
+              <mat-label>Country</mat-label>
+              <input type="text" aria-label="Country" formControlName="country" matInput [matAutocomplete]="auto1">
+              <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayNationality">
+                <mat-option *ngFor="let option of filteredNationalityList | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <i class="fa fa-search search_ico"></i>
+              <mat-error>
+                Please provide a valid country
+              </mat-error>
+            </mat-form-field>
           </div>
           <div class="box-col">
-            <mat-form-field class="full-width-input"  appearance="outline">
-                <mat-label>Language</mat-label>
-                <input type="text" aria-label="language"
-                  formControlName="language" matInput [matAutocomplete]="auto2">
-                <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayLanguage">
-                  <mat-option *ngFor="let option of filteredLangList | async" [value]="option">
-                    {{ option.name }}
-                  </mat-option>
-                </mat-autocomplete>
-                <i class="fa fa-search search_ico"></i>
-                <mat-error>
-                  Please provide a valid language
-                </mat-error>
-              </mat-form-field>
+            <mat-form-field class="full-width-input" appearance="outline">
+              <mat-label>Language</mat-label>
+              <input type="text" aria-label="language" formControlName="language" matInput [matAutocomplete]="auto2">
+              <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayLanguage">
+                <mat-option *ngFor="let option of filteredLangList | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <i class="fa fa-search search_ico"></i>
+              <mat-error>
+                Please provide a valid language
+              </mat-error>
+            </mat-form-field>
           </div>
 
         </div>
@@ -129,19 +127,16 @@
             <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
           </div> -->
           <div class="box-col">
-            <label style="padding: 0px 20px;">Script tags</label>
-            <button type="button" class="plus-minus"
-              > 
-              <mat-icon>remove</mat-icon>
-            </button>
-            <input matInput 
-              style="pointer-events: none;text-align: center;background: #fff9f2;font-weight: bold;">
-            <button type="button" class="plus-minus" 
-              ><mat-icon>add</mat-icon></button>
+            <div class="stepper-input stepper__input">
+              <stepper-input [step]="10" [min]="0" [max]="100" [initialValue]="10" symbol="" ariaLabelLess="Less 10"
+                ariaLabelMore="Plus 10">
+              </stepper-input>
+            </div>
+
           </div>
         </div>
 
-        <button mat-raised-button color="primary">Run Model</button>
+        <button mat-raised-button color="primary" class="run-model-btn">Run Model</button>
       </div>
     </form>
   </mat-card-content>

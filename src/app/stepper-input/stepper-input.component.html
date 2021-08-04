@@ -1,0 +1,11 @@
+<div class="stepper-input stepper__input">
+    <button mat-icon-button class="toggle-less" (click)="toggleLess()">
+        <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+    <div class="stepper-input-field" name="range-value" aria-atomic="true" aria-live="polite" aria-relevant="all">
+        {{renderedValue}}
+    </div>
+    <button mat-icon-button class="toggle-more" (click)="toggleMore()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>
