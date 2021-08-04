@@ -11,7 +11,8 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 export class AuthenticationService {
    // userData: Observable<firebase.User>;
    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-   verticalPosition: MatSnackBarVerticalPosition = 'top';
+   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+   durationInSeconds:number = 2;
     constructor(private angularFireAuth: AngularFireAuth,private _router: Router, private _snackBar: MatSnackBar) {
         const userData = angularFireAuth.authState;
     }
@@ -24,6 +25,7 @@ export class AuthenticationService {
                 this._snackBar.open('Successfully Registerd', 'Close', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
+                    duration: this.durationInSeconds * 1000,
                   });
                 this._router.navigate(['/login']);
                 localStorage.setItem("name", JSON.stringify('Hi ' + name));
@@ -32,6 +34,7 @@ export class AuthenticationService {
                 this._snackBar.open(error.message, 'Close', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
+                    duration: this.durationInSeconds * 1000,
                   });
             });
     }
@@ -44,6 +47,7 @@ export class AuthenticationService {
                 this._snackBar.open('Successfully Signed in', 'Close', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
+                    duration: this.durationInSeconds * 1000,
                   });
                 this._router.navigate(['/dashboard']);
 })
@@ -51,6 +55,7 @@ export class AuthenticationService {
                 this._snackBar.open(err.message, 'Close', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
+                    duration: this.durationInSeconds * 1000,
                   });
                 console.log("Something went wrong:", err.message);
             });

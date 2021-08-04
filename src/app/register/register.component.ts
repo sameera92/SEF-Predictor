@@ -29,9 +29,6 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-
   constructor(private fb: FormBuilder, private _router: Router, private authenticationService: AuthenticationService, private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
       firstname: ['', Validators.required],

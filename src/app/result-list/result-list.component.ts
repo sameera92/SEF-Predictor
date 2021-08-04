@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { InfoModalComponent } from '../info-modal/info-modal.component';
 
 @Component({
   selector: 'app-result-list',
@@ -17,7 +19,11 @@ export class ResultListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, public dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(InfoModalComponent, {});
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -55,7 +61,6 @@ export interface PeriodicElement {
   executedDate: string;
 }
 
-// ];
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     "url": "https://www.fsc.gov.tw/ch/index.jsp#",

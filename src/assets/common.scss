@@ -58,6 +58,10 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+.mat-simple-snackbar-action {
+    display: none !important;
+}
+
 .sign-up-text {
     margin-left: 10px;
 }
@@ -83,6 +87,14 @@ input:-webkit-autofill:active {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 10px;
+}
+
+.info-tooltip {
+    display: block;
+    top: 10;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 12px;
 }
 
 .flex {
@@ -111,8 +123,6 @@ input:-webkit-autofill:active {
 
 .info-icon {
     font-size: 20px;
-    position: relative;
-    top: 3px;
 }
 
 // Result-list--START
@@ -226,9 +236,9 @@ input:-webkit-autofill:active {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-  
-  .stepper__input .stepper-input-field {
+}
+
+.stepper__input .stepper-input-field {
     color: #16489d;
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -248,10 +258,7 @@ input:-webkit-autofill:active {
     -ms-flex-positive: 1;
     flex-grow: 1;
     min-width: calc(100% - 25px - 14px);
-  }
-  
-  .stepper__input button {
-   
-  }
+}
 
-  //Stepper - Input -- END
+
+//Stepper - Input -- END

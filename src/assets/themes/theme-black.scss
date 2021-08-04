@@ -56,6 +56,11 @@ th.mat-header-cell {
     color: $color-font;
 }
 
+.info-tooltip {
+    background-color: $color-black-light !important;
+}
+
+
 input:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px $color-black-light inset; 
     -webkit-text-fill-color: $color-font;
