@@ -55,10 +55,6 @@ export class LoginComponent implements OnInit {
     this.authenticationService.SignIn(this.email, this.password);
   }
 
-  signOut() {
-    this.authenticationService.SignOut();
-  }
-
   goToRegisterPage() {
     this._router.navigate(['/register']);
   }
