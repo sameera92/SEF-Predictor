@@ -37,3 +37,10 @@ mat-form-field {
     user-select: none;
     border: none;
 }
+
+.color-round {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: red;
+}

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthenticationService } from './services/AuthenticationService';
+import { Component, ViewChild } from '@angular/core';
+import { AuthenticationService } from './services/AuthenticationService'; import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
+
 interface Color {
   value: string;
   viewValue: string;
@@ -10,13 +12,18 @@ interface Color {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+
   title = 'SEF-Predictor';
   selectedValue: string;
   bodyContent: any;
   sourceBody: any;
+  themeColor: string;
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -32,6 +39,11 @@ export class AppComponent {
     { value: 'BLUE', viewValue: 'Blue' },
     { value: 'YELLOW', viewValue: 'Yellow' }
   ];
+
+  onTheme(color: string) {
+    this.onThemeChange(color);
+  }
+
 
   onThemeChange(theme: string) {
     this.bodyContent = document.getElementById('body-wrapper');

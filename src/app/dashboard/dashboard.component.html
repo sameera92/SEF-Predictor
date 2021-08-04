@@ -24,7 +24,7 @@
               <mat-label>Name</mat-label>
               <input matInput formControlName="name" required>
               <mat-error>
-                Please provide a valid country
+                Name is required
               </mat-error>
             </mat-form-field>
           </div>
@@ -123,19 +123,9 @@
           <div class="box-col">
             <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
           </div>
-          <!-- <div class="box-col">
-            <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
-          </div> -->
-          <div class="box-col">
-            <div class="stepper-input stepper__input">
-              <stepper-input [step]="10" [min]="0" [max]="100" [initialValue]="10" symbol="" ariaLabelLess="Less 10"
-                ariaLabelMore="Plus 10">
-              </stepper-input>
-            </div>
-
-          </div>
         </div>
 
+        <button mat-raised-button color="primary" class="run-model-btn mr-10">View Previous Results</button>
         <button mat-raised-button color="primary" class="run-model-btn">Run Model</button>
       </div>
     </form>

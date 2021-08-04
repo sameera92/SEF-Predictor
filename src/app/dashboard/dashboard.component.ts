@@ -33,14 +33,15 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private webService: WebService
+    private webService: WebService,
+    private _router: Router
   ) {
 
     const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
     this.formData = this.fb.group({
       url: ['', [Validators.required, Validators.pattern(reg)]],
-      country: ['', Validators.required],
       name: ['', Validators.required],
+      country: [''],
       hunch: [''],
       quality: [''],
       sourceType: ['', Validators.required],
@@ -86,7 +87,7 @@ export class DashboardComponent implements OnInit {
   ]);
 
   onSubmit() {
-
+    this._router.navigate(['/results']);
   }
 
 
@@ -140,7 +141,6 @@ export class DashboardComponent implements OnInit {
   displayNationality(countryObj: any) {
     return countryObj ? countryObj.name : undefined;
   }
-
 
 }
 

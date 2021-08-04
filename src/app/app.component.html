@@ -1,20 +1,49 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
+  <img width="40" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
   <span class="header-top">Source Extraction Feasibility Predictor</span>
-    <div class="spacer"></div>
-    <mat-form-field appearance="fill">
-      <mat-label>Theme Color</mat-label>
-      <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="onThemeChange($event.value)">
-        <mat-option *ngFor="let color of colors" [value]="color.value">
-          {{color.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div class="spacer"></div>
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" panelClass="menu-panel">
+      <div class="theme-modal-wrapper">
+        <div>
+          <h3>Theme Colors</h3>
+        </div>
+        <div class="color-round-wrapper">
+          <div class="flex">
+            <div class="color-round" style="background-color: black;" (click)="onTheme('BLACK')"></div>
+            <div class="color-round" style="background-color: blue;" (click)="onTheme('BLUE')"></div>
+            <div class="color-round" style="background-color: yellow;" (click)="onTheme('YELLOW')"></div>
+          </div>
+          <div class="flex">
+            <div class="color-round" style="background-color: red;" (click)="onTheme('RED')"></div>
+            <div class="color-round" style="background-color: green;" (click)="onTheme('GREEN')"></div>
+            <div class="color-round" style="background-color: pink;" (click)="onTheme('PINK')"></div>
+          </div>
+          <div class="flex">
+            <div class="color-round" style="background-color: white;" (click)="onTheme('WHITE')"></div>
+            <div class="color-round" style="background-color: orange;" (click)="onTheme('ORANGE')"></div>
+            <div class="color-round" style="background-color: purple;" (click)="onTheme('PURPLE')"></div>
+          </div>
+
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+
+  <button mat-stroked-button>Log out</button>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Theme Color</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="onThemeChange($event.value)">
+      <mat-option *ngFor="let color of colors" [value]="color.value">
+        {{color.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
 </div>
 
 <div class="content" role="main">
