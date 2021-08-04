@@ -56,6 +56,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { RegisterComponent } from './register/register.component';
 import { StepperInputComponent } from './stepper-input/stepper-input.component';
 import { InfoModalComponent } from './info-modal/info-modal.component';
+import { DataService } from './services/dataService';
 
 
 @NgModule({
@@ -115,7 +116,7 @@ import { InfoModalComponent } from './info-modal/info-modal.component';
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService,WebService],
+  providers: [AuthenticationService,WebService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   ariaLabelMore: string;
   renderedValue: string;
   value: number = 0;
-  firstName: any;
+  firstName: string | null;
 
   constructor(
     private fb: FormBuilder,
@@ -58,6 +58,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('name');
     this.formInitialize();
     this.getNationalityList();
     this.getLanguageList();
@@ -172,7 +173,11 @@ export class DashboardComponent implements OnInit {
   viewPreviousResult(){
     this.webService.getPreviousResults().subscribe(
       (response=>{
+        if(response){
         console.log(response)
+        }else{
+          
+        }
       })
     )
   }
