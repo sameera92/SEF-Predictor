@@ -101,8 +101,17 @@ input:-webkit-autofill:active {
     display: flex;
 }
 
+.setting-icon {
+    position: relative !important;
+    top: -1px !important;
+}
+
 .mr-10 {
     margin-right: 10px !important;
+}
+
+.mr-20 {
+    margin-right: 20px !important;
 }
 
 .mt-10 {

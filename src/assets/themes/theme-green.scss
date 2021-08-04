@@ -1,17 +1,17 @@
-$color-toolbar: #121545 !important;
-$color-card-bg:#292c5b !important;
-$color-thead: #06094a !important;
+$color-toolbar: #044404 !important;
+$color-card-bg:#325a32 !important;
+$color-thead: #164116 !important;
 $color-font: #d4d4d4;
-$color-bg: #484b89;
-$color-btn-bg: #00032c !important;
+$color-bg: #325a32ad;
+$color-btn-bg: #044404 !important;
 $color-toggle-on: rgb(121 121 121) !important;
-$color-invalid-score-row: #523232;
-$color-latest-row: #383050;
-$color-row-hover: #5559a8;
+$color-invalid-score-row: #6c2424bf;
+$color-latest-row: #403b4ed4;
+$color-row-hover: #44ae4433;
 
 tbody,
 .mat-paginator,
-tr.mat-row, 
+tr.mat-row,
 tr.mat-footer-row {
     background: $color-bg;
 }
@@ -32,10 +32,11 @@ tr.mat-row.latestRow {
     background-color: $color-latest-row;
 }
 
-mat-row, mat-header-row, 
-mat-footer-row, 
-th.mat-header-cell, 
-td.mat-cell, 
+mat-row,
+mat-header-row,
+mat-footer-row,
+th.mat-header-cell,
+td.mat-cell,
 td.mat-footer-cell {
     border-bottom-color: $color-thead;
 }

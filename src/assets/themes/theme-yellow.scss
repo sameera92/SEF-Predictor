@@ -1,22 +1,57 @@
-$color-black: #ffc107 !important;
-$color-black-light: #dcbb36 !important;
-$color-font: #000000;
-$color-bg: #fdd250 !important;
+$color-toolbar: #ac8b07 !important;
+$color-card-bg:#d1a805 !important;
+$color-thead: #a38406 !important;
+$color-font: #2c2c2c;
+$color-bg: #fdd250 ;
+$color-btn-bg: #ac8b07 !important;
+$color-toggle-on: rgb(121 121 121) !important;
+$color-invalid-score-row: #bc3232db;
+$color-latest-row: #c29de8;
+$color-row-hover: #f8e19ead;
 
 tbody,
-.mat-paginator {
+.mat-paginator,
+tr.mat-row, 
+tr.mat-footer-row {
     background: $color-bg;
 }
 
-.toolbar,
-thead,
-.mat-flat-button.mat-primary,
-.mat-raised-button.mat-primary {
-    background-color: $color-black;
+thead {
+    background-color: $color-thead;
 }
 
-mat-card {
-    background: $color-black-light;
+tr.mat-row:hover {
+    background: $color-row-hover;
+}
+
+tr.mat-row.invalidScore {
+    background-color: $color-invalid-score-row;
+}
+
+tr.mat-row.latestRow {
+    background-color: $color-latest-row;
+}
+
+mat-row, mat-header-row, 
+mat-footer-row, 
+th.mat-header-cell, 
+td.mat-cell, 
+td.mat-footer-cell {
+    border-bottom-color: $color-thead;
+}
+
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary {
+    background-color: $color-btn-bg;
+}
+
+.toolbar {
+    background: $color-toolbar;
+}
+
+mat-card,
+.mat-menu-panel {
+    background: $color-card-bg;
 }
 
 .toolbar,
@@ -45,6 +80,28 @@ td,
 [dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow,
 th.mat-header-cell {
     color: $color-font;
+}
+
+.info-tooltip {
+    background-color: $color-toolbar !important;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px $color-toolbar inset;
+    -webkit-text-fill-color: $color-font;
+}
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px $color-toolbar inset;
+    -webkit-text-fill-color: $color-font;
+}
+
+.mat-slide-toggle-thumb,
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $color-font;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $color-toggle-on;
 }
 
 .mat-divider {

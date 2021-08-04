@@ -55,17 +55,47 @@ export class AppComponent {
       case 'BLACK':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Black');
-        // this.sourceBody[0].style.backgroundColor = 'rgb(72 72 72)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(54, 54, 54)';
         break;
       case 'BLUE':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Blue');
-        // this.sourceBody[0].style.backgroundColor = '#969be0';
+        this.sourceBody[0].style.backgroundColor = 'rgb(90 95 155)';
+        break;
+      case 'GREEN':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-Green');
+        this.sourceBody[0].style.backgroundColor = 'rgb(0 90 0 / 47%)';
+        break;
+      case 'ORANGE':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-Orange');
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        break;
+      case 'PINK':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-Pink');
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        break;
+      case 'PURPLE':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-Purple');
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        break;
+      case 'RED':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-Red');
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        break;
+      case 'WHITE':
+        this.bodyContent.className = "";
+        this.bodyContent.classList.add('Theme-White');
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
         break;
       case 'YELLOW':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Yellow');
-        // this.sourceBody[0].style.backgroundColor = '#ffffaa';
+        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
         break;
       default:
         this.bodyContent.className = "";
@@ -74,7 +104,7 @@ export class AppComponent {
     }
   }
 
-  logout(){
+  logout() {
     this.authenticationService.SignOut();
   }
 }

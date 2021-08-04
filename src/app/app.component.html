@@ -5,8 +5,8 @@
   <span class="header-top">Source Extraction Feasibility Predictor</span>
   <div class="spacer"></div>
   <div>
-    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-      <mat-icon>settings</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger class="mr-20">
+      <mat-icon class="setting-icon">settings</mat-icon>
     </button>
     <mat-menu #menu="matMenu" panelClass="menu-panel">
       <div class="theme-modal-wrapper">
@@ -35,15 +35,7 @@
     </mat-menu>
   </div>
 
-  <button mat-stroked-button (click)="logout()">Log out</button>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Theme Color</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="onThemeChange($event.value)">
-      <mat-option *ngFor="let color of colors" [value]="color.value">
-        {{color.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
+  <button mat-stroked-button (click)="logout()" class="mr-20">Log out</button>
 </div>
 
 <div class="content" role="main">
