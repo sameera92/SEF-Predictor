@@ -53,8 +53,7 @@ export class DashboardComponent implements OnInit {
       isGovernmentSource: [false],
       isLoginRequire:[false],
       isreCaptcha:[false],
-      isCaptcha:[false],
-      scriptTags:[0]
+      isCaptcha:[false]
     });
   }
 
@@ -108,8 +107,7 @@ export class DashboardComponent implements OnInit {
      approvedAuthority : model.get('authority')?.value,
      isLoginRequired: model.get('isLoginRequire')?.value,
      isreCAPTCHA :  model.get('isreCaptcha')?.value,
-     isCAPTCHA :  model.get('isCaptcha')?.value,
-     numberOfScriptTags : model.controls['scriptTags'].value,
+     isCAPTCHA :  model.get('isCaptcha')?.value
     }
     console.log(request)
       this.webService.postMLModel(request).subscribe(
@@ -169,6 +167,14 @@ export class DashboardComponent implements OnInit {
 
   displayNationality(countryObj: any) {
     return countryObj ? countryObj.name : undefined;
+  }
+
+  viewPreviousResult(){
+    this.webService.getPreviousResults().subscribe(
+      (response=>{
+        console.log(response)
+      })
+    )
   }
 
 }

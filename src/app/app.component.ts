@@ -73,4 +73,8 @@ export class AppComponent {
         break;
     }
   }
+
+  logout(){
+    this.authenticationService.SignOut();
+  }
 }

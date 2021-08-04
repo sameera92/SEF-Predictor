@@ -20,18 +20,15 @@ export class WebService {
   postMLModel(reqJson:any):Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'my-auth-token'
-      })
+        'Content-Type':  'application/json'
+          })
     };
     return this.http.post<any>('http://127.0.0.1:5000/post_features', reqJson, httpOptions)
-    .pipe(
-      catchError(this.handleError('addHero', reqJson))
-    );
   }
-  
-  handleError(arg0: string, hero: any): (err: any, caught: Observable<any>) => import("rxjs").ObservableInput<any> {
-    throw new Error('Method not implemented.');
+
+  getPreviousResults(){
+    return this.http.get('http://127.0.0.1:5000/get_results');
   }
+
 }
 
