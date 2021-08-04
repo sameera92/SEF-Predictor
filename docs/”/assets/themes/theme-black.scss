@@ -1,0 +1,44 @@
+$color-black: #000000 !important;
+$color-black-light: #2a2a2a !important;
+$color-font: #ffffff;
+$color-bg: #363636;
+
+tbody,
+.mat-paginator {
+    background: $color-bg !important;
+}
+
+.toolbar,
+thead,
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary {
+    background-color: $color-black;
+}
+
+mat-card {
+    background: $color-black-light;
+}
+
+.toolbar,
+thead,
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+h2,
+.mat-form-field-label,
+input.mat-input-element,
+mat-icon,
+td,
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger,
+.mat-select-value,
+.mat-select-arrow,
+.search-field-wrapper.mat-form-field-outline {
+    color: $color-font !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-sort-header-arrow,
+[dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow,
+th.mat-header-cell {
+    color: $color-font;
+}
