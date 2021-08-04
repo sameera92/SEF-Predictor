@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   formData: FormGroup;
 
   title = "Stepper input";
-  initialValue: any;
+  initialValue = 1;
   step: number = 0;
   min: number = 0;
   max: number = 0;
@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   ariaLabelMore: string;
   renderedValue: string;
   value: number = 0;
+  firstName: any;
 
   constructor(
     private fb: FormBuilder,
@@ -48,8 +49,12 @@ export class DashboardComponent implements OnInit {
       language: ['', Validators.required],
       authority: ['', Validators.required],
       site: ['', Validators.required],
-      payload: ['', Validators.required],
-      governmentSource: ['', Validators.required]
+      isHttps: [false],
+      isGovernmentSource: [false],
+      isLoginRequire:[false],
+      isreCaptcha:[false],
+      isCaptcha:[false],
+      scriptTags:[0]
     });
   }
 
@@ -88,6 +93,30 @@ export class DashboardComponent implements OnInit {
 
   onSubmit() {
     this._router.navigate(['/results']);
+    
+    let model = this.formData;
+    let request = {   
+     url:model.get('url')?.value,
+     name:model.get('name')?.value,
+     country:model.controls['country'].value?model.controls['country'].value.name:'',
+     language:model.controls['language'].value?model.controls['language'].value.name:'',
+     originalHunch: model.get('hunch')?.value,
+     qualityOfSite :  model.get('quality')?.value,
+     isHTTPS: model.get('isHttps')?.value,
+     isGovSource:model.get('isGovernmentSource')?.value,
+     sourceType : model.get('sourceType')?.value,
+     approvedAuthority : model.get('authority')?.value,
+     isLoginRequired: model.get('isLoginRequire')?.value,
+     isreCAPTCHA :  model.get('isreCaptcha')?.value,
+     isCAPTCHA :  model.get('isCaptcha')?.value,
+     numberOfScriptTags : model.controls['scriptTags'].value,
+    }
+    console.log(request)
+      this.webService.postMLModel(request).subscribe(
+          response=>{
+            console.log(response)
+          }
+      )
   }
 
 

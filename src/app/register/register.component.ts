@@ -42,12 +42,18 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.setItem("name", JSON.stringify(''));
   }
 
   onSubmitRegister() {
-    this._snackBar.open('Success!!!', 'Close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
+    this.email = this.form.controls['email'].value;
+    this.password = this.form.controls['password'].value;
+    this.firstname = this.form.controls['firstname'].value;
+    this.signUp();
   }
+
+  signUp() {
+    this.authenticationService.SignUp(this.email, this.password,this.firstname);
+  }
+
 }

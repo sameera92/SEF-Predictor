@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="formData" (ngSubmit)="onSubmit()">
-      <h2>Source Extraction Feasibility Predictor</h2>
+      <h2>Source Extraction Feasibility Predictor </h2>
       <div class="login-wrapper">
         <div class="box">
           <div class="box-col">
@@ -109,19 +109,19 @@
         </div>
         <div class="box">
           <div class="box-col ">
-            <mat-slide-toggle>Https</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isHttps">Https</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>Government Source </mat-slide-toggle>
+            <mat-slide-toggle formControlName="isGovernmentSource" >Government Source </mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>Login Required</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isLoginRequire" >Login Required</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>reCAPTCHA</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isreCaptcha" >reCAPTCHA</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isCaptcha">CAPTCHA</mat-slide-toggle>
           </div>
         </div>
 

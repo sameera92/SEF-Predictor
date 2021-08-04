@@ -30,18 +30,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async ngOnInit(): Promise<void> { }
+  async ngOnInit(): Promise<void> {
+    localStorage.setItem("name", JSON.stringify(''));
+   }
 
   async onSubmit(): Promise<void> {
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
     if (this.form.valid) {
       try {
-        this.email = this.form.get('username')?.value;
-        this.password = this.form.get('password')?.value;
+        this.email = this.form.controls['username'].value;
+        this.password = this.form.controls['password'].value;
         //await this.authService.login(username, password);
         this.signIn()
-        this._router.navigate(['/dashboard']);
       } catch (err) {
         this.loginInvalid = true;
       }
@@ -50,16 +51,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  signUp() {
-    this.authenticationService.SignUp(this.email, this.password);
-    this.email = 'sameeralaknath@gmail.com';
-    this.password = 'asas@123';
-  }
-
   signIn() {
     this.authenticationService.SignIn(this.email, this.password);
-    this.email = 'admin@gmail.com';
-    this.password = 'adamin@123';
   }
 
   signOut() {

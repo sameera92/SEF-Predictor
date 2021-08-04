@@ -20,6 +20,7 @@ export class AppComponent {
   bodyContent: any;
   sourceBody: any;
   themeColor: string;
+  firstName: any;
 
   constructor(
     private authenticationService: AuthenticationService,
