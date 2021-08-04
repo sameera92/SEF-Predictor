@@ -109,26 +109,26 @@
         </div>
         <div class="box">
           <div class="box-col ">
-            <mat-slide-toggle>Https</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isHttps">Https</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>Government Source </mat-slide-toggle>
+            <mat-slide-toggle formControlName="isGovernmentSource" >Government Source </mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>Login Required</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isLoginRequire" >Login Required</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>reCAPTCHA</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isreCaptcha" >reCAPTCHA</mat-slide-toggle>
           </div>
           <div class="box-col">
-            <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isCaptcha">CAPTCHA</mat-slide-toggle>
           </div>
           <!-- <div class="box-col">
             <mat-slide-toggle>CAPTCHA</mat-slide-toggle>
           </div> -->
           <div class="box-col">
             <div class="stepper-input stepper__input">
-              <stepper-input [step]="10" [min]="0" [max]="100" [initialValue]="10" symbol="" ariaLabelLess="Less 10"
+              <stepper-input [step]="10" [min]="0"  formControlName="scriptTags" [max]="1000" [initialValue]="10" symbol="" ariaLabelLess="Less 10"
                 ariaLabelMore="Plus 10">
               </stepper-input>
             </div>
@@ -136,7 +136,7 @@
           </div>
         </div>
 
-        <button mat-raised-button color="primary" class="run-model-btn">Run Model</button>
+        <button mat-raised-button color="primary" type='submit' class="run-model-btn">Run Model</button>
       </div>
     </form>
   </mat-card-content>
