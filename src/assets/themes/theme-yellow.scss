@@ -32,7 +32,10 @@ td,
 .mat-paginator-page-size .mat-select-trigger,
 .mat-select-value,
 .mat-select-arrow,
-.search-field-wrapper.mat-form-field-outline {
+.search-field-wrapper.mat-form-field-outline,
+.mat-slide-toggle-content,
+.new-user-text,
+.sign-up-text {
     color: $color-font !important;
 }
 
@@ -41,4 +44,8 @@ td,
 [dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow,
 th.mat-header-cell {
     color: $color-font;
+}
+
+.mat-divider {
+    border-color: $color-font !important;
 }

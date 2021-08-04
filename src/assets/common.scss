@@ -27,7 +27,8 @@ body {
     padding: 30px !important;
 }
 
-.dashboard-wrapper {
+.dashboard-wrapper,
+.login-full-wrapper {
     margin-top: -80px;
 }
 
@@ -37,6 +38,20 @@ body {
 
 th.mat-header-cell {
     font-size: 14px;
+}
+
+.mat-input-element {
+    height: 20px !important;
+    position: relative;
+    top: -3px;
+}
+
+mat-divider {
+    margin-top: 25px !important;
+}
+
+.sign-up-text {
+    margin-left: 10px;
 }
 
 // Result-list--START
@@ -125,6 +140,13 @@ th.mat-header-cell {
 
     .login-wrapper {
         margin-top: 30px;
+    }
+
+    .new-user-wrapper {
+        margin-top: 20px;
+        .new-user-text {
+            margin-right: 8px;
+        }
     }
 }
 // Login -- END

@@ -53,6 +53,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ResultListComponent } from './result-list/result-list.component';
 import { WebService } from './services/web.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    ResultListComponent
+    ResultListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
