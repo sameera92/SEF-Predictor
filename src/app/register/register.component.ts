@@ -15,6 +15,7 @@ import {
 } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/AuthenticationService';
+import { DataService } from '../services/dataService';
 
 @Component({
   selector: 'app-register',
@@ -28,8 +29,13 @@ export class RegisterComponent implements OnInit {
   lastname: string;
   email: string;
   password: string;
-
-  constructor(private fb: FormBuilder, private _router: Router, private authenticationService: AuthenticationService, private _snackBar: MatSnackBar) {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  durationInSeconds:number = 2;
+  constructor(private fb: FormBuilder, private _router: Router, 
+    private authenticationService: AuthenticationService, 
+    private _snackBar: MatSnackBar,
+    private datService:DataService) {
     this.form = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -39,7 +45,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.setItem("name", JSON.stringify(''));
   }
 
   onSubmitRegister() {
@@ -49,8 +54,24 @@ export class RegisterComponent implements OnInit {
     this.signUp();
   }
 
-  signUp() {
-    this.authenticationService.SignUp(this.email, this.password,this.firstname);
+  signUp()  {
+    this.authenticationService.SignUp(this.email, this.password,this.firstname).then((res: any) => {
+      this._snackBar.open('Successfully Registerd', '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 1000,
+        });
+      this._router.navigate(['/login']);
+      this.datService.firstName = this.firstname;
+      // localStorage.setItem("name", JSON.stringify(this.firstname));
+  })
+  .catch((error: { message: any; }) => {
+      this._snackBar.open(error.message, '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 1000,
+        });
+  });;
   }
 
 }

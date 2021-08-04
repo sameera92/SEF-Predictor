@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/AuthenticationService';
 
@@ -22,8 +23,12 @@ export class LoginComponent implements OnInit {
   private formSubmitAttempt = false;
   email: string;
   password: string;
-
-  constructor(private fb: FormBuilder, private _router: Router,private authenticationService:AuthenticationService) {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  durationInSeconds:number = 2;
+  constructor(private fb: FormBuilder, private _router: Router,
+    private authenticationService:AuthenticationService,
+    private _snackBar: MatSnackBar) {
     this.form = this.fb.group({
       username: ['', Validators.email],
       password: ['', Validators.required],
@@ -31,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    localStorage.setItem("name", JSON.stringify(''));
    }
 
   async onSubmit(): Promise<void> {
@@ -41,7 +45,6 @@ export class LoginComponent implements OnInit {
       try {
         this.email = this.form.controls['username'].value;
         this.password = this.form.controls['password'].value;
-        //await this.authService.login(username, password);
         this.signIn()
       } catch (err) {
         this.loginInvalid = true;
@@ -52,7 +55,22 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    this.authenticationService.SignIn(this.email, this.password);
+    this.authenticationService.SignIn(this.email, this.password).then(() => {
+      this._snackBar.open('Successfully Signed in', '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 1000,
+        });
+      this._router.navigate(['/dashboard']);
+})
+  .catch((err: { message: any; }) => {
+      this._snackBar.open(err.message, '', {
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: this.durationInSeconds * 1000,
+        });
+      console.log("Something went wrong:", err.message);
+  });;
   }
 
   goToRegisterPage() {
