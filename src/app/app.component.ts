@@ -55,7 +55,7 @@ export class AppComponent {
       case 'BLACK':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Black');
-        this.sourceBody[0].style.backgroundColor = '#363636';
+        this.sourceBody[0].style.backgroundColor = 'rgb(72 72 72)';
         break;
       case 'BLUE':
         this.bodyContent.className = "";

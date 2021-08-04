@@ -1,20 +1,28 @@
-$color-black: #000000 !important;
+$color-black: #313030 !important;
 $color-black-light: #2a2a2a !important;
-$color-font: #ffffff;
+$color-black-light-01: #4f4f4f !important;
+$color-font: #bfbfbf;
 $color-bg: #363636;
+$color-btn-bg: #3c3c3c !important;
+$color-toggle-on: rgb(121 121 121) !important;
 
 tbody,
 .mat-paginator {
     background: $color-bg !important;
 }
 
-.toolbar,
 thead,
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary {
-    background-color: $color-black;
+    background-color: $color-black-light-01;
 }
 
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary {
+    background-color: $color-btn-bg;
+}
+
+.toolbar,
 mat-card,
 .mat-menu-panel {
     background: $color-black-light;
@@ -37,8 +45,7 @@ td,
 .mat-slide-toggle-content,
 .new-user-text,
 .sign-up-text,
-.stepper-input-field
- {
+.stepper-input-field {
     color: $color-font !important;
 }
 
@@ -47,6 +54,15 @@ td,
 [dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow,
 th.mat-header-cell {
     color: $color-font;
+}
+
+.mat-slide-toggle-thumb,
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $color-font;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $color-toggle-on;
 }
 
 .mat-divider {

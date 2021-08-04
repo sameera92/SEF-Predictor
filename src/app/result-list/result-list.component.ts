@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-result-list',
@@ -10,11 +11,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ResultListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['url', 'name', 'country', 'language', 'originalHunch', 'qualityOfSite', 'sourceType', 'approvedAuthority'];
+  displayedColumns: string[] = ['url', 'name', 'country', 'calculatedScore', 'executedDate'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private _router: Router) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -25,6 +28,10 @@ export class ResultListComponent implements AfterViewInit {
     filterValue = filterValue.value.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  goToHomePage() {
+    this._router.navigate(['/dashboard']);
   }
 
 }
@@ -43,7 +50,9 @@ export interface PeriodicElement {
   isLoginRequired: boolean;
   isreCAPTCHA: boolean;
   isCAPTCHA: boolean;
-  numberOfScriptTags: number
+  numberOfScriptTags: number;
+  calculatedScore: number;
+  executedDate: string;
 }
 
 // ];
@@ -62,7 +71,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 20
+    "numberOfScriptTags": 20,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.bts.com",
@@ -78,7 +89,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 15
+    "numberOfScriptTags": 15,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.abc.com",
@@ -94,7 +107,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.def.com",
@@ -110,7 +125,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.fsc.gov.tw/ch/index.jsp#",
@@ -126,7 +143,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 20
+    "numberOfScriptTags": 20,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.bts.com",
@@ -142,7 +161,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 15
+    "numberOfScriptTags": 15,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.abc.com",
@@ -158,7 +179,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.def.com",
@@ -174,7 +197,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.bts.com",
@@ -190,7 +215,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 15
+    "numberOfScriptTags": 15,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.abc.com",
@@ -206,7 +233,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.def.com",
@@ -222,7 +251,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.fsc.gov.tw/ch/index.jsp#",
@@ -238,7 +269,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 20
+    "numberOfScriptTags": 20,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.bts.com",
@@ -254,7 +287,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 15
+    "numberOfScriptTags": 15,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.abc.com",
@@ -270,7 +305,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   },
   {
     "url": "https://www.def.com",
@@ -286,6 +323,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     "isLoginRequired": false,
     "isreCAPTCHA": false,
     "isCAPTCHA": false,
-    "numberOfScriptTags": 10
+    "numberOfScriptTags": 10,
+    "calculatedScore": 20,
+    "executedDate": "05-08-2021",
   }
 ]
