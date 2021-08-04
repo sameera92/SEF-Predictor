@@ -26,7 +26,7 @@ export class WebService {
     return this.http.post<any>('http://127.0.0.1:5000/post_features', reqJson, httpOptions)
   }
 
-  getPreviousResults(){
+  getPreviousResults():Observable<any>{
     return this.http.get('http://127.0.0.1:5000/get_results');
   }
 

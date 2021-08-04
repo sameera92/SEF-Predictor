@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InfoModalComponent } from '../info-modal/info-modal.component';
+import { WebService } from '../services/web.service';
 
 @Component({
   selector: 'app-result-list',
@@ -14,12 +15,23 @@ import { InfoModalComponent } from '../info-modal/info-modal.component';
 export class ResultListComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['url', 'name', 'country', 'calculatedScore', 'executedDate'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
+  dataSource = new MatTableDataSource<any[]>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _router: Router, public dialog: MatDialog) { }
+  constructor(private _router: Router, public dialog: MatDialog  , private webService: WebService,) { }
+
+  ngOnInit(): void {
+    this.webService.getPreviousResults().subscribe(
+      (response=>{
+        if(response){
+         this.dataSource =  new MatTableDataSource(response);
+        }else{
+          
+        }
+      })
+    )
+  }
 
   openDialog() {
     this.dialog.open(InfoModalComponent, {});
