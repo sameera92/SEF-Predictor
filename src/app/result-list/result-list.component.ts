@@ -40,7 +40,7 @@ export class ResultListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.sortEnable();
+  //  this.sortEnable();
 
   }
 
@@ -48,7 +48,7 @@ export class ResultListComponent implements AfterViewInit {
     filterValue = filterValue.value.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-    this.sortEnable();
+   // this.sortEnable();
   }
 
   goToHomePage() {
