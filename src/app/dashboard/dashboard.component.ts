@@ -64,14 +64,12 @@ export class DashboardComponent implements OnInit {
       isCaptcha:[false]
     });
 
-    let snackEl = document.getElementsByClassName('mat-snack-bar-container').item(0);
-        ren.listen(snackEl, 'click', ()=>this.dismiss())
+
   }
 
   ngOnInit() {
     this.loader.showLoader();
     this.dataService.changeLogedInStatus(true);
-    this.firstName = localStorage.getItem('name');
     this.formInitialize();
     this.getNationalityList();
     this.getLanguageList();
@@ -79,6 +77,11 @@ export class DashboardComponent implements OnInit {
 
     this.value = this.initialValue
     this.renderedValue = this.value.toString() + this.symbol;
+
+    let snackEl = document.getElementsByClassName('mat-snack-bar-container').item(0);
+    if(this.ren && snackEl){
+       this.ren.listen(snackEl, 'click', ()=>this.dismiss())
+    }
   }
 
   toggleMore = () => {
