@@ -40,6 +40,10 @@ export class ResultListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    // const sortState: Sort = {active: 'calculatedScore', direction: 'desc'};
+    // this.sort.active = sortState.active;
+    // this.sort.direction = sortState.direction;
+    // this.sort.sortChange.emit(sortState);
   }
 
   applyFilter(filterValue: any) {

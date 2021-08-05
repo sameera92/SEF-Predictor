@@ -14,7 +14,7 @@
                     </mat-form-field>
                 </div>
 
-                <table mat-table [dataSource]="dataSource" matSort>
+                <table mat-table [dataSource]="dataSource" matSort matSortActive="calculatedScore" matSortDirection="asc">
 
                     <!-- URL Column -->
                     <ng-container matColumnDef="url">
@@ -31,7 +31,7 @@
                     <!-- Country Column -->
                     <ng-container matColumnDef="country">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Country}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
                     </ng-container>
 
                     <!-- Calculated Score Column -->
