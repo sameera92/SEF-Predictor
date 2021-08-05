@@ -4,8 +4,14 @@
         background: #454545 !important;
     }
 
-    .mat-menu-panel,
-    .mat-option {
-        color: #d4d4d4 !important;
+    .mat-select-panel-wrap {
+        .mat-menu-panel,
+        .mat-option {
+            color: #d4d4d4;
+        }
+    }
+    
+    .cdk-overlay-pane .mat-autocomplete-panel .mat-option {
+        color: #000000;
     }
 }
