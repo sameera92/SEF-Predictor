@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators'
 import { Router } from '@angular/router';
@@ -43,7 +43,8 @@ export class DashboardComponent implements OnInit {
     private _router: Router,
     private dataService: DataService,
     private _snackBar: MatSnackBar,
-    private loader: LoaderService
+    private loader: LoaderService,
+    private ren:Renderer2
   ) {
 
     const reg = '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$';
@@ -62,6 +63,9 @@ export class DashboardComponent implements OnInit {
       isreCaptcha:[false],
       isCaptcha:[false]
     });
+
+    let snackEl = document.getElementsByClassName('mat-snack-bar-container').item(0);
+        ren.listen(snackEl, 'click', ()=>this.dismiss())
   }
 
   ngOnInit() {
@@ -101,6 +105,11 @@ export class DashboardComponent implements OnInit {
   ]);
 
   onSubmit() {
+    this._snackBar.open('Running ML Model..Please wait..', '', {
+     horizontalPosition: 'center',
+      verticalPosition: this.verticalPosition,
+      panelClass: "success-dialog"
+    });
     this.loader.showLoader();
     if(this.formData.valid){
     let model = this.formData;
@@ -124,6 +133,7 @@ export class DashboardComponent implements OnInit {
           (response=>{
             if(response){
             this.dataService.changeData(response);
+            this.dismiss()
             this._router.navigate(['/results']);
             }else{
             this.dataService.changeData([]);
@@ -238,6 +248,10 @@ export class DashboardComponent implements OnInit {
         });
       }
     )
+  }
+
+  dismiss(){
+    this._snackBar.dismiss();
   }
 
 }
