@@ -1,3 +1,5 @@
+@import './themes/common-theme.scss';
+
 .toolbar.mat-form-field {
     margin-right: 20px;
     margin-top: 10px;
@@ -20,6 +22,11 @@ body {
 
 .result-list-wrapper .search-field-wrapper .mat-form-field-outline {
     background: transparent !important;
+}
+
+.modal-header-wrapper {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
 
 .mat-card {
