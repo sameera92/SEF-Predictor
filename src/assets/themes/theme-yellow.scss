@@ -1,9 +1,9 @@
-$color-toolbar: #ac8b07 !important;
-$color-card-bg:#d1a805 !important;
+$color-toolbar: #a09111 !important;
+$color-card-bg:#bbbb0373 !important;
 $color-thead: #a38406 !important;
 $color-font: #2c2c2c;
 $color-bg: #fdd250 ;
-$color-btn-bg: #ac8b07 !important;
+$color-btn-bg: #d6b327 !important;
 $color-toggle-on: rgb(121 121 121) !important;
 $color-invalid-score-row: #bc3232db;
 $color-latest-row: #c29de8;
@@ -43,6 +43,10 @@ td.mat-footer-cell {
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary {
     background-color: $color-btn-bg;
+}
+
+.mat-stroked-button {
+    border-color: $color-btn-bg;
 }
 
 .toolbar {

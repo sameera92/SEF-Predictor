@@ -3,7 +3,7 @@ $color-card-bg:#325a32 !important;
 $color-thead: #164116 !important;
 $color-font: #d4d4d4;
 $color-bg: #325a32ad;
-$color-btn-bg: #044404 !important;
+$color-btn-bg: #002900 !important;
 $color-toggle-on: rgb(121 121 121) !important;
 $color-invalid-score-row: #6c2424bf;
 $color-latest-row: #403b4ed4;
@@ -44,6 +44,10 @@ td.mat-footer-cell {
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary {
     background-color: $color-btn-bg;
+}
+
+.mat-stroked-button {
+    border-color: $color-btn-bg;
 }
 
 .toolbar {

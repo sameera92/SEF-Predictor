@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from './services/AuthenticationService'; import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
@@ -13,7 +13,8 @@ interface Color {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None 
 })
 export class AppComponent {
 
@@ -104,7 +105,7 @@ export class AppComponent {
       case 'RED':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Red');
-        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(150 47 46 / 87%)';
         break;
       case 'WHITE':
         this.bodyContent.className = "";
@@ -114,7 +115,7 @@ export class AppComponent {
       case 'YELLOW':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Yellow');
-        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(230 219 69 / 77%)';
         break;
       default:
         this.bodyContent.className = "";

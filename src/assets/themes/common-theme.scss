@@ -1,0 +1,11 @@
+.cdk-overlay-pane {
+    .mat-menu-panel,
+    .mat-select-panel {
+        background: #454545 !important;
+    }
+
+    .mat-menu-panel,
+    .mat-option {
+        color: #d4d4d4 !important;
+    }
+}
