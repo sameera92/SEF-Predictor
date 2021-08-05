@@ -35,7 +35,7 @@
                     </ng-container>
 
                     <!-- Calculated Score Column -->
-                    <ng-container matColumnDef="calculatedScore">
+                    <ng-container matColumnDef="score">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Calculated Score
                             <button mat-icon-button class="ml-10" (click)="openDialog()">
                                 <mat-icon class="info-icon" matTooltip="Click to See How is the Score Calculated?"
@@ -46,7 +46,7 @@
                     </ng-container>
 
                     <!-- Executed Date Column -->
-                    <ng-container matColumnDef="executedDate">
+                    <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Executed Date </th>
                         <td mat-cell *matCellDef="let element"> {{element.date}} </td>
                     </ng-container>

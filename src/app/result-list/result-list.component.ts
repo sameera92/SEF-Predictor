@@ -15,7 +15,7 @@ import { DataService } from '../services/dataService';
 })
 export class ResultListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['url', 'name', 'country', 'calculatedScore', 'executedDate'];
+  displayedColumns: string[] = ['url', 'name', 'country', 'score', 'date'];
   dataSource = new MatTableDataSource<any[]>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -40,7 +40,7 @@ export class ResultListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  //  this.sortEnable();
+    this.sortEnable();
 
   }
 
@@ -48,7 +48,7 @@ export class ResultListComponent implements AfterViewInit {
     filterValue = filterValue.value.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-   // this.sortEnable();
+    this.sortEnable();
   }
 
   goToHomePage() {
@@ -56,7 +56,7 @@ export class ResultListComponent implements AfterViewInit {
   }
 
   sortEnable(){
-    const sortState: Sort = {active: 'calculatedScore', direction: 'desc'};
+    const sortState: Sort = {active: 'score', direction: 'desc'};
     this.sort.active = sortState.active;
     this.sort.direction = sortState.direction;
     this.sort.sortChange.emit(sortState);
