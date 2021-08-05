@@ -65,13 +65,14 @@ export class DashboardComponent implements OnInit {
     });
 
     let snackEl = document.getElementsByClassName('mat-snack-bar-container').item(0);
-        ren.listen(snackEl, 'click', ()=>this.dismiss())
+    if(ren && snackEl){
+       ren.listen(snackEl, 'click', ()=>this.dismiss())
+    }
   }
 
   ngOnInit() {
     this.loader.showLoader();
     this.dataService.changeLogedInStatus(true);
-    this.firstName = localStorage.getItem('name');
     this.formInitialize();
     this.getNationalityList();
     this.getLanguageList();
