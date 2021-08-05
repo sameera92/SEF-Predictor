@@ -80,7 +80,7 @@ export class AppComponent {
       case 'BLUE':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Blue');
-        this.sourceBody[0].style.backgroundColor = 'rgb(90 95 155)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(18 21 69 / 43%)';
         break;
       case 'GREEN':
         this.bodyContent.className = "";
@@ -90,17 +90,17 @@ export class AppComponent {
       case 'ORANGE':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Orange');
-        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(255 165 0 / 38%)';
         break;
       case 'PINK':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Pink');
-        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(255 103 130 / 47%)';
         break;
       case 'PURPLE':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Purple');
-        this.sourceBody[0].style.backgroundColor = 'rgb(216 196 118)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(128 0 128 / 34%)';
         break;
       case 'RED':
         this.bodyContent.className = "";
@@ -115,7 +115,7 @@ export class AppComponent {
       case 'YELLOW':
         this.bodyContent.className = "";
         this.bodyContent.classList.add('Theme-Yellow');
-        this.sourceBody[0].style.backgroundColor = 'rgb(230 219 69 / 77%)';
+        this.sourceBody[0].style.backgroundColor = 'rgb(230 219 69 / 61%)';
         break;
       default:
         this.bodyContent.className = "";

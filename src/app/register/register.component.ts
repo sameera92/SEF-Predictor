@@ -77,4 +77,8 @@ export class RegisterComponent implements OnInit {
   });;
   }
 
+  goToLoginPage() {
+    this._router.navigate(['/login']);
+  }
+
 }
